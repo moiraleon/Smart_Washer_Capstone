@@ -16,6 +16,12 @@ public class StartWash {
     @Autowired
     FillLevelDao fillLevelDao;
 
+
+    @RequestMapping(method = RequestMethod.GET, value = "/")
+    public String getHomePage(){
+        return "home";
+    }
+
     @RequestMapping(method = RequestMethod.GET, value = "/start-wash")
     public String startWash() {
        Double lastValue = fillLevelDao.getLastFillLevel();
