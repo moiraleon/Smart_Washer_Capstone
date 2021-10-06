@@ -1,4 +1,4 @@
-package com.database.company_JDBC;
+package com.database.SmartWasherJDBC;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

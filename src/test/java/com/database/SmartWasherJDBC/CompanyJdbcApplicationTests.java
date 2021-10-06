@@ -1,4 +1,4 @@
-package com.database.company_JDBC;
+package com.database.SmartWasherJDBC;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
