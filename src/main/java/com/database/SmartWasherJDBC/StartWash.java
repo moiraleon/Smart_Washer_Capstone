@@ -38,6 +38,20 @@ public class StartWash {
     }
 
 
+    @RequestMapping(method = RequestMethod.GET, value = "/logs")
+    public String getLogsPage(){
+        return "logs.html";
+    }
 
+
+    @RequestMapping(method = RequestMethod.GET, value = "/account")
+    public String getAccountPage(){
+        return "account.html";
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value = "/sign-up")
+    public String getSignUpPage(){
+        return "sign-up.html";
+    }
 
 }
