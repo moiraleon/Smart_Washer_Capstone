@@ -19,7 +19,7 @@ public class StartWash {
 
     @RequestMapping(method = RequestMethod.GET, value = "/")
     public String getHomePage(){
-        return "home";
+        return "home.html";
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/start-wash")
