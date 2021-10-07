@@ -31,16 +31,21 @@ public class WebController {
     public Boolean startWash(Model model){
         Double lastValue = fillLevelDao.getLastFillLevel();
 
-        if (lastValue <=8){
+        if (lastValue <=8 && lastValue>=4){
             System.out.println("Level detected below min fill quantity. Order placed");
+            fillLevelDao.createFillLevel(lastValue-4);
 
         } else if (lastValue>8) {
             System.out.println("Detergent level sufficient. Wash started.");
+            fillLevelDao.createFillLevel(lastValue-4);
+
+        } else if(lastValue <4){
+            System.out.println("Wash not completed. Insufficient detergent.");
+
 
         }
 
-        fillLevelDao.createFillLevel(lastValue-4);
-        System.out.println("start wash button clicked");
+//        fillLevelDao.createFillLevel(lastValue-4);
         return true;
     }
 
