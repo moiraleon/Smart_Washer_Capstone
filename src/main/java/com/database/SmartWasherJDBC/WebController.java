@@ -18,12 +18,12 @@ public class WebController {
 
     @RequestMapping(method = RequestMethod.GET, value = "/")
     public String getHomePage(){
-        return "home.html";
+        return "home";
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/start-wash")
     public String startWashPage() {
-        return "StartWash.html";
+        return "StartWash";
     }
 
     @PostMapping("/start-wash")
@@ -40,24 +40,27 @@ public class WebController {
 
         fillLevelDao.createFillLevel(lastValue-4);
         System.out.println("start wash button clicked");
-        return "StartWash.html";
+        return "StartWash";
     }
 
 
     @RequestMapping(method = RequestMethod.GET, value = "/logs")
-    public String getLogsPage(){
-        return "logs.html";
+    public String getLogsPage(Model model){
+        List<Double> pageDisplayLogs = fillLevelDao.displayAllFillLevels();
+        model.addAttribute("entry",pageDisplayLogs);
+        return "logs";
     }
+
 
 
     @RequestMapping(method = RequestMethod.GET, value = "/account")
     public String getAccountPage(){
-        return "account.html";
+        return "account";
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/sign-up")
     public String getSignUpPage(){
-        return "sign-up.html";
+        return "sign-up";
     }
 
 }

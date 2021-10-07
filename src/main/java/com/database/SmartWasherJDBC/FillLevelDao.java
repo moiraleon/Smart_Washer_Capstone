@@ -30,20 +30,23 @@ public class FillLevelDao {
 
     }
 //SHOWING ALL LOGS ON PAGE
-//    public double displayAllFillLevels(){
-//        List<Double> allFillValues = new ArrayList<>();
-//        try(
-//                Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/devices-data?useSSL=false", "root", "pluralsight");
-//                Statement statement = connection.createStatement();
-//                ResultSet resultSet = statement.executeQuery("select * from device_one");
-//                ) {
-//            while (resultSet.next()){
-//                allFillValues.add(resultSet());
-//            }
-//        }catch (Exception e){
-//            e.printStackTrace();
-//        }
-//    }
+    public List<Double> displayAllFillLevels(){
+        List<Double> allFillValues = new ArrayList<>();
+        try(
+                Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/devices-data?useSSL=false", "root", "pluralsight");
+                Statement statement = connection.createStatement();
+                ResultSet resultSet = statement.executeQuery("select * from device_one");
+                ) {
+            while (resultSet.next()){
+                allFillValues.add(resultSet.getDouble("fill_level"));
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return allFillValues;
+    }
+
+
 
     public double getLastFillLevel(){
         List<Double> fillValues = new ArrayList<>();

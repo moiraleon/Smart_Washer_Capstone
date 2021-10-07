@@ -11884,23 +11884,22 @@ body {
                             <thead>
                             <tr>
 <!--                                //column headings-->
-                                <th>  Device Name  </th>
-                                <th>  Fill Level  </th>
+                                <th> -- Device Name --  </th>
+                                <th> -- Fill Level -- </th>
 <!--                                //order status-->
-                                <th>  Ordered </th>
-                                <th>  No Order  </th>
+                                <th>  -- Ordered -- </th>
+                                <th> -- No Order -- </th>
 
 
                             </tr>
                             </thead>
 
                             <tbody>
-                            <tr>
-<!--                                //log details-->
-                                <td th:text="${entry.getDevice()}">null</td>
-                                <td th:text="${entry.getFillLevel()}">null</td>
-                                <td th:text="${entry.isOrderInProcess()}">null</td>
-                                <td th:text="${entry.isOrderNotInProcess()}">null</td>
+
+
+                            <tr th:each="number: ${entry}">
+                                <td> Machine 1</td>
+                                <td th:text="${number}" />
 
                             </tr>
 
