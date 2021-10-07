@@ -11886,16 +11886,24 @@ body {
 <!--                                //column headings-->
                                 <th>  Device Name  </th>
                                 <th>  Fill Level  </th>
-                                <th>  Order Status  </th>
+<!--                                //order status-->
+                                <th>  Unordered </th>
+                                <th>  Purchased  </th>
+                                <th>  Purchase Unsuccessful  </th>
+                                <th>  In Transit  </th>
+
                             </tr>
                             </thead>
 
                             <tbody>
                             <tr>
 <!--                                //log details-->
-                                <td th:text="${entry.getDevice()}">Machine 1</td>
-                                <td th:text="${entry.getFillLevel()}">60 oz</td>
-                                <td th:text="${entry.getOrderStatus()}">unordered</td>
+                                <td th:text="${entry.getDevice()}">null</td>
+                                <td th:text="${entry.getFillLevel()}">null</td>
+                                <td th:text="${entry.isUnordered()}">null</td>
+                                <td th:text="${entry.isPurchased()}">null</td>
+                                <td th:text="${entry.isOrderUnsuccessful()}">null</td>
+                                <td th:text="${entry.isInTransit()}">null</td>
                             </tr>
 
 
