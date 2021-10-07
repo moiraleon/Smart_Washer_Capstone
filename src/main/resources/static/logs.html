@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Logs</title>
@@ -11883,6 +11883,7 @@ body {
                         <table id="datatablesSimple">
                             <thead>
                             <tr>
+<!--                                //column headings-->
                                 <th>  Device Name  </th>
                                 <th>  Fill Level  </th>
                                 <th>  Order Status  </th>
@@ -11891,9 +11892,10 @@ body {
 
                             <tbody>
                             <tr>
-                                <td>Machine 1</td>
-                                <td>60 oz</td>
-                                <td>unordered</td>
+<!--                                //log details-->
+                                <td th:text="${entry.getDevice()}">Machine 1</td>
+                                <td th:text="${entry.getFillLevel()}">60 oz</td>
+                                <td th:text="${entry.getOrderStatus()}">unordered</td>
                             </tr>
 
 
