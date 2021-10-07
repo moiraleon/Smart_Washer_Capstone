@@ -1,6 +1,14 @@
 package com.database.SmartWasherJDBC;
 
+import javax.swing.*;
+import java.awt.event.ActionListener;
+
 public class StartWash {
+
+
+
+
+
 //    Double lastValue = fillLevelDao.getLastFillLevel();
 //
 //        if (lastValue <=8){
