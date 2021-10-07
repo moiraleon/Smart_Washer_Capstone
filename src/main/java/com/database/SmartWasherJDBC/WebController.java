@@ -27,20 +27,21 @@ public class WebController {
     }
 
     @PostMapping("/start-wash")
-    public String startWash(Model model, @RequestParam String action){
+    @ResponseBody
+    public Boolean startWash(Model model){
         Double lastValue = fillLevelDao.getLastFillLevel();
 
-        if (lastValue <=8 && action.equals("start-wash")){
+        if (lastValue <=8){
             System.out.println("Level detected below min fill quantity. Order placed");
 
-        } else if (lastValue>8 && action.equals("start-wash")) {
+        } else if (lastValue>8) {
             System.out.println("Detergent level sufficient. Wash started.");
 
         }
 
         fillLevelDao.createFillLevel(lastValue-4);
         System.out.println("start wash button clicked");
-        return "StartWash";
+        return true;
     }
 
 
