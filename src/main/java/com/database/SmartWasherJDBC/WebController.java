@@ -1,19 +1,19 @@
 package com.database.SmartWasherJDBC;
 
+import com.database.SmartWasherJDBC.DAO.DeviceDao;
+import com.database.SmartWasherJDBC.model.Device;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.sql.*;
-import java.util.ArrayList;
 import java.util.List;
 
 @Controller
 public class WebController {
 
     @Autowired
-    FillLevelDao fillLevelDao;
+    DeviceDao fillLevelDao;
 
 
     @RequestMapping(method = RequestMethod.GET, value = "/")
@@ -33,11 +33,11 @@ public class WebController {
 
         if (lastValue <=8 && lastValue>=4){
             System.out.println("Level detected below min fill quantity. Order placed");
-            fillLevelDao.createFillLevel(lastValue-4);
+            fillLevelDao.createFillLevel("machine 1", lastValue-4 );
 
         } else if (lastValue>8) {
             System.out.println("Detergent level sufficient. Wash started.");
-            fillLevelDao.createFillLevel(lastValue-4);
+            fillLevelDao.createFillLevel("machine 1",lastValue-4);
 
         } else if(lastValue <4){
             System.out.println("Wash not completed. Insufficient detergent.");
@@ -52,7 +52,7 @@ public class WebController {
 
     @RequestMapping(method = RequestMethod.GET, value = "/logs")
     public String getLogsPage(Model model){
-        List<Double> pageDisplayLogs = fillLevelDao.displayAllFillLevels();
+        List<Device> pageDisplayLogs = fillLevelDao.displayAllFillLevels();
         model.addAttribute("entry",pageDisplayLogs);
         return "logs";
     }

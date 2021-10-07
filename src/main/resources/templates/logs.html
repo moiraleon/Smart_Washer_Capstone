@@ -11897,10 +11897,9 @@ body {
                             <tbody>
 
 
-                            <tr th:each="number: ${entry}">
-                                <td> Machine 1</td>
-                                <td th:text="${number}" />
-
+                            <tr th:each="device: ${entry}">
+                                <td th:text="${device.name}"></td>
+                                <td th:text="${device.fillLevel}" />
                             </tr>
 
 

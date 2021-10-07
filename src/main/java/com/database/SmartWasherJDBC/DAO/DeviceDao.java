@@ -1,5 +1,6 @@
-package com.database.SmartWasherJDBC;
+package com.database.SmartWasherJDBC.DAO;
 
+import com.database.SmartWasherJDBC.model.Device;
 import org.springframework.stereotype.Component;
 
 import java.sql.*;
@@ -7,18 +8,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
-public class FillLevelDao {
+public class DeviceDao {
 
-    public void createFillLevel(Double fillLevel){
+    public void createFillLevel(String name, Double fillLevel){
 
         try(
                 Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/devices-data?useSSL=false", "root", "pluralsight");
-                PreparedStatement statement = connection.prepareStatement("INSERT INTO device_one VALUES(?);")
+                PreparedStatement statement = connection.prepareStatement("INSERT INTO device_one (name,fill_value) VALUES(?,?);")
 
 
 
                 ){
-            statement.setDouble(1,fillLevel);
+            statement.setString(1,name);
+            statement.setDouble(2,fillLevel);
             statement.executeUpdate();
 
 
@@ -30,20 +32,24 @@ public class FillLevelDao {
 
     }
 //SHOWING ALL LOGS ON PAGE
-    public List<Double> displayAllFillLevels(){
-        List<Double> allFillValues = new ArrayList<>();
+    public List<Device> displayAllFillLevels(){
+        List<Device> allDevices = new ArrayList<>();
         try(
                 Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/devices-data?useSSL=false", "root", "pluralsight");
                 Statement statement = connection.createStatement();
                 ResultSet resultSet = statement.executeQuery("select * from device_one");
                 ) {
             while (resultSet.next()){
-                allFillValues.add(resultSet.getDouble("fill_level"));
+                Device device = new Device();
+                device.setId(resultSet.getInt("id"));
+                device.setName(resultSet.getString("name"));
+                device.setFillLevel(resultSet.getInt("fill_level"));
+                allDevices.add(device);
             }
         }catch (Exception e){
             e.printStackTrace();
         }
-        return allFillValues;
+        return allDevices;
     }
 
 
