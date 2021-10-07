@@ -11887,10 +11887,9 @@ body {
                                 <th>  Device Name  </th>
                                 <th>  Fill Level  </th>
 <!--                                //order status-->
-                                <th>  Unordered </th>
-                                <th>  Purchased  </th>
-                                <th>  Purchase Unsuccessful  </th>
-                                <th>  In Transit  </th>
+                                <th>  Ordered </th>
+                                <th>  No Order  </th>
+
 
                             </tr>
                             </thead>
@@ -11900,10 +11899,9 @@ body {
 <!--                                //log details-->
                                 <td th:text="${entry.getDevice()}">null</td>
                                 <td th:text="${entry.getFillLevel()}">null</td>
-                                <td th:text="${entry.isUnordered()}">null</td>
-                                <td th:text="${entry.isPurchased()}">null</td>
-                                <td th:text="${entry.isOrderUnsuccessful()}">null</td>
-                                <td th:text="${entry.isInTransit()}">null</td>
+                                <td th:text="${entry.isOrderInProcess()}">null</td>
+                                <td th:text="${entry.isOrderNotInProcess()}">null</td>
+
                             </tr>
 
 
