@@ -14,7 +14,7 @@ public class DeviceDao {
 
         try(
                 Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/devices-data?useSSL=false", "root", "pluralsight");
-                PreparedStatement statement = connection.prepareStatement("INSERT INTO device_one (name,fill_value) VALUES(?,?);")
+                PreparedStatement statement = connection.prepareStatement("INSERT INTO device_one (name,fill_level) VALUES(?,?);")
 
 
 

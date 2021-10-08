@@ -10,6 +10,3 @@ method: 'POST',
  return response.json();
 }
 
-async function insufficientDetergentAlert(){
-alert("Wash not completed. Insufficient detergent");
-}
