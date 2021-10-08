@@ -57,6 +57,13 @@ public class WebController {
         return "logs";
     }
 
+    @PostMapping("/logs")
+    @ResponseBody
+    public Boolean resetOrderStatus(Model model){
+        // write code here
+        return true;
+    }
+
 
 
     @RequestMapping(method = RequestMethod.GET, value = "/account")
